@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import {
   getAuth,
+  createUserWithEmailAndPassword,
   onAuthStateChanged,
   GoogleAuthProvider,
   signInWithPopup,
+  signInWithEmailAndPassword,
+  updateProfile,
   signOut,
 } from 'firebase/auth';
 
@@ -17,23 +20,53 @@ const useFirebase = () => {
   const [error, setError] = useState(null);
   const auth = getAuth();
 
-  // this function will be called when the user will login with google
-  const signInWithGoogle = () => {
+  // this function will be called when the user is signed in
+  const loginInWithEmailAndPassword = (email, password) => {
     setIsLoading(true);
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider)
+    setError(null);
+
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setUser(userCredential.user);
-        setIsLoading(false);
+        const user = userCredential.user;
+        setUser(user);
       })
       .catch((error) => {
         setError(error);
-        setIsLoading(false);
       })
       .finally(() => {
         setIsLoading(false);
       });
   };
+
+  // this function will be called when the user will create an account
+  // and this will set a new user name
+  const changeName = (name) => {
+    updateProfile(auth.currentUser, { displayName: name })
+      .then(() => {})
+      .catch((error) => {
+        setError(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  // this function will be called when the user will create an account
+  const createAccountWithEmailAndPassword = (name, email, password) => {
+    setIsLoading(true);
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        setUser({ ...userCredential.user, displayName: name });
+        changeName(name);
+      })
+      .catch((error) => {
+        setError(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
 
   // this will look for the user state and this will change the user state
   useEffect(() => {
@@ -64,7 +97,8 @@ const useFirebase = () => {
     user,
     isLoading,
     error,
-    signInWithGoogle,
+    createAccountWithEmailAndPassword,
+    loginInWithEmailAndPassword,
     logOut,
   };
 };
