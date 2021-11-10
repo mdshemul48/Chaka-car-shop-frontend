@@ -29,17 +29,17 @@ const Footer = () => {
               </li>
               <li>
                 <Link to='#' className='footer-link'>
-                  Places to visit
+                  Rental Vehicles
                 </Link>
               </li>
               <li>
                 <Link to='#' className='footer-link'>
-                  Hotel Activities
+                  Pre Owned Vehicles
                 </Link>
               </li>
               <li>
                 <Link to='#' className='footer-link'>
-                  Excursions
+                  Brand New Cars
                 </Link>
               </li>
             </ul>
@@ -49,28 +49,28 @@ const Footer = () => {
             <ul>
               <li>
                 <Link to='#' className='footer-link'>
-                  Standard Room{' '}
+                  New & Used Car
                 </Link>
               </li>
               <li>
                 {' '}
                 <Link to='#' className='footer-link'>
-                  Double Room
+                  0% APR Finincing
                 </Link>
               </li>
               <li>
                 <Link to='#' className='footer-link'>
-                  Family Room
+                  Maintanence Pakages
                 </Link>
               </li>
               <li>
                 <Link to='#' className='footer-link'>
-                  Standard Suite
+                  Vehicles History Pakages
                 </Link>
               </li>
               <li>
                 <Link to='#' className='footer-link'>
-                  California Suite
+                  Buy, Sale, Trade
                 </Link>
               </li>
             </ul>

@@ -12,6 +12,7 @@ import PrivateRoute from './Routes/PrivateRoute';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Shared/Footer/Footer';
 function App() {
   return (
     <AuthProvider>
@@ -28,7 +29,7 @@ function App() {
             <h1>orders</h1>
           </PrivateRoute>
         </Switch>
-        {/* <Footer /> */}
+        <Footer />
       </Router>
     </AuthProvider>
   );
