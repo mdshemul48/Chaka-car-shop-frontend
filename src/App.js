@@ -4,6 +4,7 @@ import { AuthProvider } from './Contexts/AuthContext';
 import NavBar from './components/Shared/NavBar/NavBar';
 
 // components
+import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 
 // PrivateRoute
@@ -18,7 +19,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route path='/' exact>
-            <h1>Home</h1>
+            <Home />
           </Route>
           <Route path='/auth' exact>
             <Auth />

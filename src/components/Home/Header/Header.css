@@ -1,0 +1,13 @@
+.header-area {
+  color: white;
+  padding: 9rem 0 4rem;
+}
+
+.header-area h1 {
+  font-size: 5rem;
+  font-family: 'Odibee Sans', cursive;
+}
+.header-area p {
+  margin-top: 20px;
+  font-size: 1.3rem;
+}
