@@ -14,7 +14,7 @@ firebaseInitialization();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
-  const [adminRole, setAdminRole] = useState(false);
+  const [adminRole, setAdminRole] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const auth = getAuth();
@@ -41,7 +41,9 @@ const useFirebase = () => {
   // and this will set a new user name
   const changeName = (name) => {
     updateProfile(auth.currentUser, { displayName: name })
-      .then(() => {})
+      .then(() => {
+        setUser({ ...user, displayName: name });
+      })
       .catch((error) => {
         setError(error);
       })
