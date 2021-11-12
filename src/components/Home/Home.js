@@ -3,6 +3,8 @@ import { Container } from 'react-bootstrap';
 import Products from '../Products/Products';
 import Header from './Header/Header';
 import Services from './Services/Services';
+import Reviews from './Reviews/Reviews';
+
 import './Home.css';
 const Home = () => {
   return (
@@ -13,6 +15,7 @@ const Home = () => {
         <hr />
       </Container>
       <Products />
+      <Reviews />
       <Services />
     </main>
   );

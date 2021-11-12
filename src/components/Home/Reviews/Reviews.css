@@ -1,0 +1,11 @@
+.review {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f5f7ff;
+}
+.review-title {
+  color: #052046;
+  font-family: 'Odibee Sans', cursive;
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 0.7rem;
+}
