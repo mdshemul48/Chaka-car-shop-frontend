@@ -11,7 +11,7 @@ const SideBar = ({ url }) => {
   return (
     <div
       className='d-flex flex-column flex-shrink-0 p-3 text-white bg-dark'
-      style={{ minHeight: '80vh' }}
+      style={{ minHeight: '100%' }}
     >
       <Link
         to='/'
