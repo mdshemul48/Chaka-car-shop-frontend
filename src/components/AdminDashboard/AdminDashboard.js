@@ -3,6 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 import AddProduct from './AddProduct/AddProduct';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
+import ManageProducts from './ManageProducts/ManageProducts';
 
 import Orders from './Orders/Orders';
 import SideBar from './SideBar/SideBar';
@@ -27,7 +28,7 @@ const AdminDashboard = () => {
               <MakeAdmin />
             </Route>
             <Route path={`${path}/manage-product`}>
-              <h1>Manage Products</h1>
+              <ManageProducts />
             </Route>
             <Route path={'*'}>
               <Redirect to='/' />
