@@ -30,6 +30,14 @@ const NavBar = () => {
               Home
             </Nav.Link>
 
+            <Nav.Link
+              as={NavLink}
+              activeClassName='active'
+              to='/products'
+              exact
+            >
+              Products
+            </Nav.Link>
             {/* login and logout button */}
             {user?.email ? (
               <>
