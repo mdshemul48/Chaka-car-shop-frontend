@@ -14,6 +14,7 @@ import PrivateRoute from './Routes/PrivateRoute';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Dashboard from './components/Dashboard/Dashboard';
 function App() {
   return (
     <AuthProvider>
@@ -31,6 +32,9 @@ function App() {
           </Route>
           <PrivateRoute path='/orders'>
             <h1>orders</h1>
+          </PrivateRoute>
+          <PrivateRoute path='/dashboard'>
+            <Dashboard />
           </PrivateRoute>
         </Switch>
         <Footer />

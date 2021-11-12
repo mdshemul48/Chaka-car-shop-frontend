@@ -14,6 +14,7 @@ firebaseInitialization();
 
 const useFirebase = () => {
   const [user, setUser] = useState({});
+  const [adminRole, setAdminRole] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const auth = getAuth();
@@ -65,7 +66,6 @@ const useFirebase = () => {
       });
   };
 
-
   // this will look for the user state and this will change the user state
   useEffect(() => {
     setIsLoading(true);
@@ -93,6 +93,7 @@ const useFirebase = () => {
 
   return {
     user,
+    adminRole,
     isLoading,
     error,
     createAccountWithEmailAndPassword,

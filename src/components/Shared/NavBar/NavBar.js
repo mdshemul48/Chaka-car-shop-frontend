@@ -7,7 +7,7 @@ import useAuth from '../../../hooks/useAuth';
 
 import './NavBar.css';
 const NavBar = () => {
-  const { user, adminRole, logOut } = useAuth();
+  const { user, logOut } = useAuth();
   const history = useHistory();
   const handleLogin = () => {
     history.push('/auth');
@@ -49,7 +49,6 @@ const NavBar = () => {
                 >
                   Dashboard
                 </Nav.Link>
-                {adminRole ? 'gg' : 'user'}
                 <Button
                   variant='outline-dark'
                   className='ms-2'
