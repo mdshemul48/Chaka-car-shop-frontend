@@ -2,6 +2,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
 
+import Orders from './Orders/Orders';
 import SideBar from './SideBar/SideBar';
 
 const AdminDashboard = () => {
@@ -15,7 +16,7 @@ const AdminDashboard = () => {
         <Col lg={10}>
           <Switch>
             <Route exact path={path}>
-              <h1>Manage All Orders</h1>
+              <Orders />
             </Route>
             <Route path={`${path}/add-new-product`}>
               <h1 className='text-center mt-5'>Add A Product</h1>

@@ -3,7 +3,7 @@ import { Button, Col, Row } from 'react-bootstrap';
 
 const Order = () => {
   return (
-    <div className='d-flex my-2'>
+    <div className='d-flex my-2 ps-2'>
       <Row className='g-0'>
         <Col lg={3}>
           <div className='me-2'>
@@ -25,7 +25,14 @@ const Order = () => {
             <div className='d-flex align-items-center'>
               <span className='fs-5 fw-bold text-danger'>$899999</span>
               <Button
-                // onClick={() => RemoveHandler(reservation._id)}
+                // onClick={() => shippedHandler(item._id)}
+                variant='primary'
+                className='ms-2'
+              >
+                shipped
+              </Button>
+              <Button
+                // onClick={() => RemoveHandler(item._id)}
                 variant='danger'
                 className='ms-2'
               >
