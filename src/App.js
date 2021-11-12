@@ -15,6 +15,7 @@ import PrivateRoute from './Routes/PrivateRoute';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './components/Dashboard/Dashboard';
+import OrderNow from './components/OrderNow/OrderNow';
 function App() {
   return (
     <AuthProvider>
@@ -30,8 +31,8 @@ function App() {
           <Route path='/auth' exact>
             <Auth />
           </Route>
-          <PrivateRoute path='/orders'>
-            <h1>orders</h1>
+          <PrivateRoute path='/order/:productId'>
+            <OrderNow />
           </PrivateRoute>
           <PrivateRoute path='/dashboard'>
             <Dashboard />
