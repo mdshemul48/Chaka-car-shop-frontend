@@ -9,7 +9,7 @@ const Order = () => {
           <div className='me-2'>
             <img
               src='https://i0.wp.com/www.bdcarshop.com/wp-content/uploads/2020/09/Mazda-6-2020-1.jpg?resize=1110%2C577&ssl=1'
-              alt='room 1'
+              alt='order 1'
               className='img-fluid rounded'
             />
           </div>

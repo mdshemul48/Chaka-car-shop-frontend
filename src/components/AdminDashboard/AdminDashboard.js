@@ -1,6 +1,8 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
+import AddProduct from './AddProduct/AddProduct';
+import MakeAdmin from './MakeAdmin/MakeAdmin';
 
 import Orders from './Orders/Orders';
 import SideBar from './SideBar/SideBar';
@@ -19,10 +21,10 @@ const AdminDashboard = () => {
               <Orders />
             </Route>
             <Route path={`${path}/add-new-product`}>
-              <h1 className='text-center mt-5'>Add A Product</h1>
+              <AddProduct />
             </Route>
             <Route path={`${path}/make-admin`}>
-              <h1>Make Admin</h1>
+              <MakeAdmin />
             </Route>
             <Route path={`${path}/manage-product`}>
               <h1>Manage Products</h1>
