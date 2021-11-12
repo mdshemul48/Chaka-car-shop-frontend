@@ -25,7 +25,7 @@ const Order = () => {
             <div className='d-flex align-items-center'>
               <span className='fs-5 fw-bold text-danger'>$899999</span>
               <Button variant='danger' className='ms-2'>
-                Remove Order
+                Remove
               </Button>
             </div>
           </div>

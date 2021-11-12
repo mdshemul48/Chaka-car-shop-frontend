@@ -4,7 +4,7 @@ import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
 import SideBar from './SideBar/SideBar';
 import MyOrders from './MyOrders/MyOrders';
-import Review from './Review/Review';
+import AddReview from './AddReview/AddReview';
 const UserDashboard = () => {
   const { path, url } = useRouteMatch();
 
@@ -24,7 +24,7 @@ const UserDashboard = () => {
                 <h1 className='text-center mt-5'>coming soon</h1>
               </Route>
               <Route path={`${path}/review`}>
-                <Review />
+                <AddReview />
               </Route>
             </Switch>
           </main>

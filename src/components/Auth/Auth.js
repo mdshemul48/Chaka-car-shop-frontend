@@ -134,7 +134,7 @@ const Auth = () => {
                 ? "Don't have an account?"
                 : 'Already have an account?'}
               <span
-                className='ms-2 text-success toggle-button'
+                className='ms-2 text-danger toggle-button'
                 onClick={() => setAuthToggle(!authToggle)}
               >
                 {authToggle ? 'Sign Up' : 'Sign In'}
