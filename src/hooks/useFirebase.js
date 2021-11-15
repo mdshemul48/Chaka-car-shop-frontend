@@ -15,9 +15,22 @@ firebaseInitialization();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [adminRole, setAdminRole] = useState(true);
+  const [token, setToken] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const auth = getAuth();
+
+  // getting token for current user
+  useEffect(() => {
+    auth.currentUser
+      ?.getIdToken()
+      .then((token) => {
+        setToken(token);
+      })
+      .catch((mess) => {
+        console.log(mess);
+      });
+  }, [auth.currentUser]);
 
   // this function will be called when the user is signed in
   const loginInWithEmailAndPassword = (email, password) => {
@@ -95,6 +108,7 @@ const useFirebase = () => {
 
   return {
     user,
+    token,
     adminRole,
     isLoading,
     error,

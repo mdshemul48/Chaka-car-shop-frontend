@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+
 import useAuth from '../../hooks/useAuth';
 
 const OrderNow = () => {
-  const { id } = useParams();
+  const { productId } = useParams();
   const { user } = useAuth();
   const [carInfo, setCarInfo] = React.useState({});
   const [formData, setFormData] = React.useState({
@@ -17,6 +18,7 @@ const OrderNow = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
   useEffect(() => {
     setFormData({
       ...formData,
@@ -27,7 +29,7 @@ const OrderNow = () => {
 
   useEffect(() => {
     const fetch = async () => {
-      const url = `${process.env.REACT_APP_BACKEND_LINK}/api/cars/${id}`;
+      const url = `${process.env.REACT_APP_BACKEND_LINK}/api/cars/${productId}`;
       try {
         const response = await axios.get(url);
         setCarInfo(response.data);

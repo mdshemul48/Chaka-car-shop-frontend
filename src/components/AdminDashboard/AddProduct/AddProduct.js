@@ -1,8 +1,10 @@
 import React from 'react';
-import axios from 'axios';
-import { Button, Container, Form } from 'react-bootstrap';
+import useAxios from '../../../hooks/useAxios';
+
+import { Button, Form } from 'react-bootstrap';
 
 const AddProduct = () => {
+  const axios = useAxios();
   const [Product, setProduct] = React.useState({
     name: '',
     description: '',
@@ -27,6 +29,12 @@ const AddProduct = () => {
         price: '',
         image: '',
       });
+
+      const response = await axios.post('/products', Product);
+      const { insertedId } = response.data;
+      if (insertedId) {
+        alert('Product added successfully');
+      }
     } catch (error) {
       alert(error.message);
     }
