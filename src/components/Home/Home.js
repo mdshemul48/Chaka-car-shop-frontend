@@ -14,7 +14,7 @@ const Home = () => {
         <h1 className='product-area-title'>Buy Your Dream Car</h1>
         <hr />
       </Container>
-      <Products />
+      <Products limit={6} />
       <Reviews />
       <Services />
     </main>
