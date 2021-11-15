@@ -21,7 +21,19 @@ const SideBar = ({ url }) => {
       </Link>
 
       <hr />
+
       <ul className='nav nav-pills flex-column mb-auto'>
+        <li>
+          <NavLink
+            to={`${url}/manage-product`}
+            className='nav-link text-white'
+            aria-current='page'
+            activeClassName='active'
+          >
+            <SiGooglemybusiness className='me-2' />
+            Manage Products
+          </NavLink>
+        </li>
         <li className='nav-item'>
           <NavLink
             to={url}
@@ -54,17 +66,6 @@ const SideBar = ({ url }) => {
           >
             <AiOutlineUserAdd className='me-2' />
             Make Admin
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={`${url}/manage-product`}
-            className='nav-link text-white'
-            aria-current='page'
-            activeClassName='active'
-          >
-            <SiGooglemybusiness className='me-2' />
-            Manage Products
           </NavLink>
         </li>
       </ul>
