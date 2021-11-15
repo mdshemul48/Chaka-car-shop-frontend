@@ -13,7 +13,10 @@ const Service = (props) => {
         </div>
         <div>
           <h3>{name}</h3>
-          <p>{description}</p>
+          <p>
+            {description.substr(0, 300)}
+            {description.length > 300 && '...'}
+          </p>
           <div className='d-flex align-items-center'>
             <Button as={Link} to={`/order/${_id}`} variant='danger'>
               Buy Now
