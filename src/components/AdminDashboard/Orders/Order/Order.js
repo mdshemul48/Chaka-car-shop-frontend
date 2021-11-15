@@ -4,7 +4,6 @@ import { Badge, Button, Col, Row } from 'react-bootstrap';
 const Order = ({ order, statusChangeHandler, orderRemoveHandler }) => {
   const { name: userName, address, product, _id, status } = order;
   const { name, price, description } = product;
-  console.log(order);
   return (
     <div className='d-flex my-2 ps-2'>
       <Row className='g-0'>

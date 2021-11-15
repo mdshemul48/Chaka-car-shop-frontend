@@ -23,7 +23,6 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const auth = getAuth();
-  console.log('auth', user);
   // getting token for current user
   useEffect(() => {
     auth.currentUser
@@ -135,7 +134,6 @@ const useFirebase = () => {
           { headers: { authorization: `Bearer ${token}` } }
         )
         .then((res) => {
-          console.log(res.data);
           setAdminRole(res.data.admin);
         })
         .finally(() => {

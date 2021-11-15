@@ -10,7 +10,6 @@ import SideBar from './SideBar/SideBar';
 
 const AdminDashboard = () => {
   const { path, url } = useRouteMatch();
-  console.log(path, url);
   return (
     <main>
       <Row className='g-0'>

@@ -6,14 +6,12 @@ const Orders = () => {
   const [orders, setOrders] = useState([]);
   const axios = useAxios();
   useEffect(() => {
-    console.log('gg');
     axios
       .get('/orders')
       .then((res) => {
         setOrders(res.data);
       })
       .catch((err) => {
-        console.log(err);
       });
   }, []);
 
@@ -21,7 +19,6 @@ const Orders = () => {
     const confirm = window.confirm('Are you sure?');
     if (confirm) {
       axios.put(`/orders/${id}`).then((res) => {
-        console.log(res);
         const newOrders = orders.map((order) => {
           if (order._id === id) {
             order.status = 'shipped';
@@ -37,14 +34,12 @@ const Orders = () => {
     const confirm = window.confirm('Are you sure?');
     if (confirm) {
       axios.delete(`/orders/${id}`).then((res) => {
-        console.log(res);
         const newOrders = orders.filter((order) => order._id !== id);
         setOrders(newOrders);
       });
     }
   };
 
-  console.log(orders);
   return (
     <section className='ps-2'>
       <h2>Manage Orders</h2>

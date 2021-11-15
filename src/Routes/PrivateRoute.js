@@ -18,7 +18,6 @@ const PrivateRoute = ({ children, ...rest }) => {
     <Route
       {...rest}
       render={({ location }) => {
-        console.log(location);
         return user.displayName ? (
           children
         ) : (
