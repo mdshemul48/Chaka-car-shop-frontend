@@ -5,19 +5,22 @@ import { Route, Redirect } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const { user, isLoading } = useAuth();
-  if (isLoading) {
+  const { user, isLoading, adminLoading } = useAuth();
+
+  if (isLoading || adminLoading) {
     return (
       <div className='my-5 d-flex justify-content-center'>
         <Spinner animation='border' />
       </div>
     );
   }
+
   return (
     <Route
       {...rest}
-      render={({ location }) =>
-        user.displayName ? (
+      render={({ location }) => {
+        console.log(location);
+        return user.displayName ? (
           children
         ) : (
           <Redirect
@@ -26,8 +29,8 @@ const PrivateRoute = ({ children, ...rest }) => {
               state: { from: location },
             }}
           />
-        )
-      }
+        );
+      }}
     />
   );
 };

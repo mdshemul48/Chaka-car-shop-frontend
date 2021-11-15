@@ -10,6 +10,7 @@ import SideBar from './SideBar/SideBar';
 
 const AdminDashboard = () => {
   const { path, url } = useRouteMatch();
+  console.log(path, url);
   return (
     <main>
       <Row className='g-0'>
@@ -21,14 +22,15 @@ const AdminDashboard = () => {
             <Route exact path={path}>
               <Orders />
             </Route>
-            <Route path={`${path}/add-new-product`}>
+            <Route exact path={`${path}/add-new-product`}>
               <AddProduct />
             </Route>
-            <Route path={`${path}/make-admin`}>
-              <MakeAdmin />
-            </Route>
-            <Route path={`${path}/manage-product`}>
+
+            <Route exact path={`${path}/manage-product`}>
               <ManageProducts />
+            </Route>
+            <Route exact path={`${path}/make-admin`}>
+              <MakeAdmin />
             </Route>
             <Route path={'*'}>
               <Redirect to='/' />

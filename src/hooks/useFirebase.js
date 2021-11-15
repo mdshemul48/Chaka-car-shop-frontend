@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import useAxios from './useAxios';
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -13,13 +15,15 @@ import firebaseInitialization from '../config/firebase.init';
 firebaseInitialization();
 
 const useFirebase = () => {
+  const axios = useAxios();
   const [user, setUser] = useState({});
-  const [adminRole, setAdminRole] = useState(true);
+  const [adminRole, setAdminRole] = useState(false);
+  const [adminLoading, setAdminLoading] = useState(true);
   const [token, setToken] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const auth = getAuth();
-
+  console.log('auth', user);
   // getting token for current user
   useEffect(() => {
     auth.currentUser
@@ -54,14 +58,26 @@ const useFirebase = () => {
   // and this will set a new user name
   const changeName = (name) => {
     updateProfile(auth.currentUser, { displayName: name })
-      .then(() => {
-        setUser({ ...user, displayName: name });
-      })
+      .then(() => {})
       .catch((error) => {
         setError(error);
       })
       .finally(() => {
         setIsLoading(false);
+      });
+  };
+
+  // create user in to the server
+  const createUser = (name, email) => {
+    setIsLoading(true);
+    setError(null);
+    axios
+      .post('/users', { name, email })
+      .then((res) => {
+        console.log('user created');
+      })
+      .catch((error) => {
+        setError(error);
       });
   };
 
@@ -72,6 +88,9 @@ const useFirebase = () => {
       .then((userCredential) => {
         setUser({ ...userCredential.user, displayName: name });
         changeName(name);
+        if (userCredential.user.email) {
+          createUser(name, email);
+        }
       })
       .catch((error) => {
         setError(error);
@@ -106,12 +125,29 @@ const useFirebase = () => {
       });
   };
 
+  useEffect(() => {
+    setAdminLoading(true);
+    if (token.length > 0) {
+      axios
+        .post(
+          '/users/me',
+          {},
+          { headers: { authorization: `Bearer ${token}` } }
+        )
+        .then((res) => {
+          console.log(res.data);
+          setAdminRole(res.data.admin);
+          setAdminLoading(false);
+        });
+    }
+  }, [token]);
   return {
     user,
     token,
     adminRole,
     isLoading,
     error,
+    adminLoading,
     createAccountWithEmailAndPassword,
     loginInWithEmailAndPassword,
     logOut,
