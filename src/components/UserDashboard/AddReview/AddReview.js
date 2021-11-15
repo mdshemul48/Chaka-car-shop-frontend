@@ -1,11 +1,14 @@
 import React from 'react';
-import axios from 'axios';
 import { Button, Form } from 'react-bootstrap';
 import ReactStars from 'react-rating-stars-component';
+import useAuth from '../../../hooks/useAuth';
+import useAxios from '../../../hooks/useAxios';
 
 const AddReview = () => {
+  const { user } = useAuth();
+  const axios = useAxios();
   const [review, setReview] = React.useState({
-    message: '',
+    comment: '',
     rating: 0,
   });
 
@@ -18,16 +21,21 @@ const AddReview = () => {
 
   const reviewSubmitHandler = async (event) => {
     event.preventDefault();
-    console.log(review);
     try {
       setReview({
-        message: '',
-        rating: 0,
+        comment: '',
+        rating: 1,
       });
+      const response = await axios.post('/reviews', {
+        ...review,
+        name: user.displayName,
+      });
+      alert(response.data.message);
     } catch (error) {
       alert(error.message);
     }
   };
+
   return (
     <main className='my-5'>
       <div className='ps-3'>
@@ -39,10 +47,10 @@ const AddReview = () => {
             <Form.Control
               className='w-25'
               onChange={inputChangeHandler}
-              name='message'
+              name='comment'
               as='textarea'
               rows={3}
-              value={review.message}
+              defaultValue={review.comment}
             />
           </Form.Group>
           <Form.Group className='mb-3' controlId='exampleForm.ControlSelect1'>
@@ -51,6 +59,7 @@ const AddReview = () => {
               onChange={(newRating) => {
                 setReview({ ...review, rating: newRating });
               }}
+              value={review.rating}
               count={5}
               size={24}
               isHalf={true}
