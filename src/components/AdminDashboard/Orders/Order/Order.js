@@ -1,7 +1,11 @@
 import React from 'react';
-import { Button, Col, Row } from 'react-bootstrap';
+import { Badge, Button, Col, Row } from 'react-bootstrap';
 
-const Order = () => {
+const Order = ({ order, statusChangeHandler, orderRemoveHandler }) => {
+  const { product, _id, status } = order;
+  console.log(order);
+  const { name, price, description } = product;
+
   return (
     <div className='d-flex my-2 ps-2'>
       <Row className='g-0'>
@@ -16,23 +20,26 @@ const Order = () => {
         </Col>
         <Col className={9}>
           <div>
-            <h3>Mazda 6</h3>
-            <p className='w-75'>
-              The 2020 Mazda 6 ranks near the top of the midsize car class,
-              largely on the strength of its spirited performance and premium
-              cabin.
-            </p>
+            <h3>{name}</h3>
+            {status !== 'shipped' ? (
+              <Badge className='bg-warning'>pending</Badge>
+            ) : (
+              <Badge className='bg-primary'>shipped</Badge>
+            )}
+            <p className='w-75'>{description}</p>
             <div className='d-flex align-items-center'>
-              <span className='fs-5 fw-bold text-danger'>$899999</span>
+              <span className='fs-5 fw-bold text-danger'>${price}</span>
+              {status !== 'shipped' && (
+                <Button
+                  onClick={() => statusChangeHandler(_id)}
+                  variant='primary'
+                  className='ms-2'
+                >
+                  shipped
+                </Button>
+              )}
               <Button
-                // onClick={() => shippedHandler(item._id)}
-                variant='primary'
-                className='ms-2'
-              >
-                shipped
-              </Button>
-              <Button
-                // onClick={() => RemoveHandler(item._id)}
+                onClick={() => orderRemoveHandler(_id)}
                 variant='danger'
                 className='ms-2'
               >

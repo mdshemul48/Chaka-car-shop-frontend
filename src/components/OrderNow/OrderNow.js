@@ -4,8 +4,10 @@ import { useParams } from 'react-router-dom';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 
 import useAuth from '../../hooks/useAuth';
+import useAxios from '../../hooks/useAxios';
 
 const OrderNow = () => {
+  const axios = useAxios();
   const { productId } = useParams();
   const { user } = useAuth();
   const [carInfo, setCarInfo] = React.useState({});
@@ -28,35 +30,23 @@ const OrderNow = () => {
   }, []);
 
   useEffect(() => {
-    const fetch = async () => {
-      const url = `${process.env.REACT_APP_BACKEND_LINK}/api/cars/${productId}`;
-      try {
-        const response = await axios.get(url);
-        setCarInfo(response.data);
-      } catch (error) {
-        alert(error.message);
-      }
-    };
-    fetch();
+    axios.get(`/products/${productId}`).then((res) => {
+      setCarInfo(res.data);
+    });
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const url = `${process.env.REACT_APP_BACKEND_LINK}/api/orders`;
-
-    formData.room = carInfo;
     axios
-      .post(url, formData)
-      .then(() => {
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-        });
-        alert('Order placed successfully');
+      .post('/orders', {
+        ...formData,
+        product: carInfo,
       })
-      .catch((err) => {
-        console.log(err);
+      .then(() => {
+        alert('order placed successfully.');
+      })
+      .catch(() => {
+        alert('order failed.');
       });
   };
 
