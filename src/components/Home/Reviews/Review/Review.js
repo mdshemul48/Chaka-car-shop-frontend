@@ -2,11 +2,12 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import ReactStars from 'react-rating-stars-component';
 
-const Review = () => {
+const Review = ({ review }) => {
+  const { comment, name, rating } = review;
   return (
     <Col lg={4}>
       <div className='bg-white rounded p-3 d-flex flex-column'>
-        <h4 className='text-center'>MD.Shimul</h4>
+        <h4 className='text-center'>{name}</h4>
         <ReactStars
           classNames={'mx-auto'}
           count={5}
@@ -17,13 +18,10 @@ const Review = () => {
           fullIcon={<i className='fa fa-star'></i>}
           activeColor='#ffd700'
           edit={false}
-          value={4}
+          value={rating}
         />
 
-        <p className='text-center'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum,
-          quisquam.
-        </p>
+        <p className='text-center'>{comment}</p>
       </div>
     </Col>
   );

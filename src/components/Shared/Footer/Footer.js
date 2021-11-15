@@ -78,7 +78,7 @@ const Footer = () => {
 
           <Col lg={6}>
             <h6 className='fw-bold text-dark'>SIGN UP FOR NEWSLETTER</h6>
-            <p>Get 30% OFF coupon today subscibers.</p>
+            <p>Get 2% OFF coupon today subscribers.</p>
             <Row>
               <Col>
                 <input
