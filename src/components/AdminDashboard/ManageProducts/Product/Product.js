@@ -1,8 +1,11 @@
 import React from 'react';
 import { Button, Col, Row } from 'react-bootstrap';
+import useAxios from '../../../../hooks/useAxios';
 
-const Product = ({ product }) => {
-  const { name, price, description, image } = product;
+const Product = ({ product, deleteProductHandler }) => {
+  const axios = useAxios();
+  const { name, price, description, image, _id } = product;
+
   return (
     <div className='d-flex my-2 ps-2'>
       <Row className='g-0'>
@@ -14,15 +17,11 @@ const Product = ({ product }) => {
         <Col className={9}>
           <div>
             <h3>{name}</h3>
-            <p className='w-75'>
-              The 2020 Mazda 6 ranks near the top of the midsize car class,
-              largely on the strength of its spirited performance and premium
-              cabin.
-            </p>
+            <p className='w-75'>{description}</p>
             <div className='d-flex align-items-center'>
-              <span className='fs-5 fw-bold text-danger'>$899999</span>
+              <span className='fs-5 fw-bold text-danger'>${price}</span>
               <Button
-                // onClick={() => RemoveHandler(item._id)}
+                onClick={() => deleteProductHandler(_id)}
                 variant='danger'
                 className='ms-2'
               >
