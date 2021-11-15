@@ -23,17 +23,6 @@ const SideBar = ({ url }) => {
       <hr />
 
       <ul className='nav nav-pills flex-column mb-auto'>
-        <li>
-          <NavLink
-            to={`${url}/manage-product`}
-            className='nav-link text-white'
-            aria-current='page'
-            activeClassName='active'
-          >
-            <SiGooglemybusiness className='me-2' />
-            Manage Products
-          </NavLink>
-        </li>
         <li className='nav-item'>
           <NavLink
             to={url}
@@ -44,6 +33,17 @@ const SideBar = ({ url }) => {
           >
             <MdOutlineProductionQuantityLimits className='me-2' />
             Manage All Orders
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={`${url}/manage-product`}
+            className='nav-link text-white'
+            aria-current='page'
+            activeClassName='active'
+          >
+            <SiGooglemybusiness className='me-2' />
+            Manage Products
           </NavLink>
         </li>
         <li className='nav-item'>
