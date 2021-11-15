@@ -5,10 +5,8 @@ import AdminDashboard from '../AdminDashboard/AdminDashboard';
 import UserDashboard from '../UserDashboard/UserDashboard';
 
 const Dashboard = () => {
-  const { adminRole, isLoading, user } = useAuth();
-  if (adminRole && isLoading) {
-    return <div>Loading...</div>;
-  }
+  const { adminRole } = useAuth();
+
   return adminRole ? <AdminDashboard /> : <UserDashboard />;
 };
 

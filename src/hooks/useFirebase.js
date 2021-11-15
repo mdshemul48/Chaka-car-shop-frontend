@@ -136,7 +136,9 @@ const useFirebase = () => {
         )
         .then((res) => {
           console.log(res.data);
-          setAdminRole(res.data.admin);
+          setAdminLoading(false);
+        })
+        .finally(() => {
           setAdminLoading(false);
         });
     }
