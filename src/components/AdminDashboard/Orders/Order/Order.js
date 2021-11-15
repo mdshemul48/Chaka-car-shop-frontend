@@ -2,10 +2,9 @@ import React from 'react';
 import { Badge, Button, Col, Row } from 'react-bootstrap';
 
 const Order = ({ order, statusChangeHandler, orderRemoveHandler }) => {
-  const { product, _id, status } = order;
-  console.log(order);
+  const { name: userName, address, product, _id, status } = order;
   const { name, price, description } = product;
-
+  console.log(order);
   return (
     <div className='d-flex my-2 ps-2'>
       <Row className='g-0'>
@@ -26,6 +25,9 @@ const Order = ({ order, statusChangeHandler, orderRemoveHandler }) => {
             ) : (
               <Badge className='bg-primary'>shipped</Badge>
             )}
+            <h5>
+              ordered by {userName} from {address}
+            </h5>
             <p className='w-75'>{description}</p>
             <div className='d-flex align-items-center'>
               <span className='fs-5 fw-bold text-danger'>${price}</span>
