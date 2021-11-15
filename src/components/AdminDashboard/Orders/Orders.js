@@ -18,24 +18,30 @@ const Orders = () => {
   }, []);
 
   const statusChangeHandler = (id) => {
-    axios.put(`/orders/${id}`).then((res) => {
-      console.log(res);
-      const newOrders = orders.map((order) => {
-        if (order._id === id) {
-          order.status = 'shipped';
-        }
-        return order;
+    const confirm = window.confirm('Are you sure?');
+    if (confirm) {
+      axios.put(`/orders/${id}`).then((res) => {
+        console.log(res);
+        const newOrders = orders.map((order) => {
+          if (order._id === id) {
+            order.status = 'shipped';
+          }
+          return order;
+        });
+        setOrders(newOrders);
       });
-      setOrders(newOrders);
-    });
+    }
   };
 
   const orderRemoveHandler = (id) => {
-    axios.delete(`/orders/${id}`).then((res) => {
-      console.log(res);
-      const newOrders = orders.filter((order) => order._id !== id);
-      setOrders(newOrders);
-    });
+    const confirm = window.confirm('Are you sure?');
+    if (confirm) {
+      axios.delete(`/orders/${id}`).then((res) => {
+        console.log(res);
+        const newOrders = orders.filter((order) => order._id !== id);
+        setOrders(newOrders);
+      });
+    }
   };
 
   console.log(orders);
