@@ -8,14 +8,14 @@ import Footer from './components/Shared/Footer/Footer';
 import Home from './components/Home/Home';
 import Auth from './components/Auth/Auth';
 import Products from './components/Products/Products';
+import Dashboard from './components/Dashboard/Dashboard';
+import OrderNow from './components/OrderNow/OrderNow';
 
 // PrivateRoute
 import PrivateRoute from './Routes/PrivateRoute';
 
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Dashboard from './components/Dashboard/Dashboard';
-import OrderNow from './components/OrderNow/OrderNow';
 function App() {
   return (
     <AuthProvider>
